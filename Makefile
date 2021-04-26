@@ -13,8 +13,6 @@ build:
 	$(DOCKERCMD) build -t ${IMG} .
 
 start:
-	# For now this is required since mapped volumes are owned by root
-	#xhost +
 	$(DOCKERCMD) run -d  --rm -it --name ${CONTAINER_NAME} \
 		--cap-add CAP_AUDIT_WRITE  --cap-add  CAP_SYS_PTRACE  \
 		-e USER_UID=$(USER_UID) \
